@@ -1,0 +1,45 @@
+// Importe Varaible
+@import "./utils/variables";
+
+// Styles globaux appliqués à l'ensemble de l'application
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 62.5%;
+    font-family: $font-family;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+button{
+    cursor: pointer;
+    border: none;
+}
+
+main{
+    padding: 5rem 5rem 5rem 15rem;
+
+    @media screen and (max-width: 1500px) {
+        padding: 4rem;
+        margin-top: 9rem;
+        margin-bottom: 9rem;
+    }
+
+    @media screen and (max-width: 675px) {
+        margin-bottom: 11rem;
+    }
+}

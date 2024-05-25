@@ -1,0 +1,16 @@
+// Dans src/App.scss
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .content-area {
+    display: flex;
+    flex-grow: 1; // Le reste de la page prend toute la hauteur après le header
+  }
+  
+  .main-content {
+    flex-grow: 1; // Permet au contenu principal
+  }
