@@ -7,6 +7,7 @@ import {
   Tooltip,
   ResponsiveContainer,
   ReferenceLine,
+  Legend,
 } from "recharts";
 
 const CustomTooltip = ({ active, payload }) => {
@@ -30,6 +31,7 @@ const ActivityChart = ({ sessions }) => {
 
   return (
     <ResponsiveContainer width="100%" height={300}>
+      <p className="title-activity">Activité quotidienne</p>
       <BarChart
         data={formattedSessions}
         margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
@@ -49,6 +51,18 @@ const ActivityChart = ({ sessions }) => {
           tick={false}
         />
         <Tooltip content={<CustomTooltip />} />
+        <Legend
+          formatter={(value, entry, index) => {
+            if (value === "kilogram") return "Poids (kg)";
+            if (value === "calories") return "Calories brûlées (kCal)";
+            return value;
+          }}
+          verticalAlign="top"
+          align="right"
+          iconType="circle"
+          iconSize={7}
+          wrapperStyle={{ top: 0, right: 20 }}
+        />
         <Bar
           yAxisId="kilogram"
           dataKey="kilogram"

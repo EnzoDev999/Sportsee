@@ -1,4 +1,3 @@
-// Dans src/services/userServices.js
 import axios from "axios";
 import UserInfos from "../models/userInfos";
 import UserPerformance from "../models/userPerformance";
