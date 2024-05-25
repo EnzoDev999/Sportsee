@@ -61,7 +61,7 @@ const ActivityChart = ({ sessions }) => {
           align="right"
           iconType="circle"
           iconSize={7}
-          wrapperStyle={{ top: 0, right: 20 }}
+          wrapperStyle={{ top: 0, right: 20, fontSize: 14 }}
         />
         <Bar
           yAxisId="kilogram"
