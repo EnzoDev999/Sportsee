@@ -7,7 +7,9 @@ import {
   USER_MAIN_DATA,
   USER_PERFORMANCE,
   USER_AVERAGE_SESSIONS,
+  USER_ACTIVITY,
 } from "../data/mockData.js";
+import UserActivity from "../models/userActivity.jsx";
 
 export const getUserData = async (userId, env, dataType) => {
   let user;
@@ -31,6 +33,10 @@ export const getUserData = async (userId, env, dataType) => {
           );
           if (!user) throw new Error("User not found in mock data.");
           break;
+        case "activity":
+          user = USER_ACTIVITY.find((user) => user.userId === parseInt(userId));
+          if (!user) throw new Error("User not found in mock data.");
+          break;
         default:
           throw new Error("Invalid data type");
       }
@@ -45,6 +51,9 @@ export const getUserData = async (userId, env, dataType) => {
           break;
         case "averageSessions":
           url = `http://localhost:3000/user/${userId}/average-sessions`;
+          break;
+        case "activity":
+          url = `http://localhost:3000/user/${userId}/activity`;
           break;
         default:
           throw new Error("Invalid data type");
@@ -67,6 +76,8 @@ export const getUserData = async (userId, env, dataType) => {
       return new UserPerformance(user);
     case "averageSessions":
       return new UserAvgSessions(user);
+    case "activity":
+      return new UserActivity(user);
     default:
       throw new Error("Invalid data type");
   }

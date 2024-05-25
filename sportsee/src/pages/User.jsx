@@ -5,6 +5,7 @@ import KeyDataCard from "../components/KeyDataCard";
 import ScoreChart from "../components/scoreChart";
 import PerformanceChart from "../components/RadarChart";
 import AverageSessionsChart from "../components/AverageSessionsChart";
+import ActivityChart from "../components/ActivityChart";
 import calorieIcon from "../assets/calorie.svg";
 import proteinIcon from "../assets/chicken.svg";
 import carbIcon from "../assets/apple.svg";
@@ -15,8 +16,15 @@ import "../sass/pages/user.scss";
 
 const User = () => {
   const { id } = useParams();
-  const { setUserId, userInfos, userPerformance, userAvgSessions, error, env } =
-    useDataContext();
+  const {
+    setUserId,
+    userInfos,
+    userActivity,
+    userPerformance,
+    userAvgSessions,
+    error,
+    env,
+  } = useDataContext();
 
   useEffect(() => {
     if (id) {
@@ -29,7 +37,7 @@ const User = () => {
     return <div>Failed to load user data. Please try again later.</div>;
   }
 
-  if (!userInfos || !userPerformance || !userAvgSessions) {
+  if (!userInfos || !userPerformance || !userAvgSessions || !userActivity) {
     return <div>Loading user data...</div>;
   }
 
@@ -42,6 +50,9 @@ const User = () => {
         <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
       </header>
       <div className="profile_main">
+        <div className="profile_main_activity">
+          <ActivityChart sessions={userActivity.sessions} />
+        </div>
         <div className="profile_main_averageSessions">
           <AverageSessionsChart sessions={userAvgSessions.sessions} />
         </div>

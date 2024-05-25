@@ -55,6 +55,28 @@
       }
     }
 
+    &_activity {
+      background-color: $color-light-grey;
+      border-radius: 5px;
+      padding: 20px;
+      width: 100%;
+      height: 320px;
+
+      .custom-tooltip {
+        background-color: $color-red;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        font-size: 14px;
+        color: $color-light;
+      }
+
+      .recharts-responsive-container {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
     .score-chart {
       position: relative;
       display: flex;

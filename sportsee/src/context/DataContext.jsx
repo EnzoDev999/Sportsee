@@ -11,6 +11,7 @@ export const DataContextProvider = ({ children }) => {
   const [userInfos, setUserInfos] = useState(null);
   const [userPerformance, setUserPerformance] = useState(null);
   const [userAvgSessions, setUserAvgSessions] = useState(null);
+  const [userActivity, setUserActivity] = useState(null);
 
   useEffect(() => {
     if (!userId) return;
@@ -20,11 +21,22 @@ export const DataContextProvider = ({ children }) => {
         const userInfoData = await getUserData(userId, env, "infos");
         setUserInfos(userInfoData);
 
-        const userPerformanceData = await getUserData(userId, env, "performance");
+        const userPerformanceData = await getUserData(
+          userId,
+          env,
+          "performance"
+        );
         setUserPerformance(userPerformanceData);
 
-        const userAvgSessionsData = await getUserData(userId, env, "averageSessions");
+        const userAvgSessionsData = await getUserData(
+          userId,
+          env,
+          "averageSessions"
+        );
         setUserAvgSessions(userAvgSessionsData);
+
+        const userActivityData = await getUserData(userId, env, "activity");
+        setUserActivity(userActivityData);
       } catch (error) {
         console.error("Error fetching user info:", error);
         setError(error.message || "Failed to fetch data");
@@ -48,6 +60,7 @@ export const DataContextProvider = ({ children }) => {
         userInfos,
         userPerformance,
         userAvgSessions,
+        userActivity,
         setError,
         error,
       }}
