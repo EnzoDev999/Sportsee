@@ -28,16 +28,110 @@
     }
   }
 
-  &_main {
+  &_charts {
     display: flex;
-    height: 63vh;
-    max-height: 900px;
     gap: 2rem;
+    height: 100%;
 
-    @include md {
-      flex-direction: column-reverse;
-      height: auto;
-      max-height: unset;
+    &_left {
+      display: flex;
+      flex-direction: column;
+      width: 75%;
+      height: 100%;
+
+      &_activity {
+        background-color: $color-light-grey;
+        border-radius: 5px;
+        padding: 20px;
+        width: 100%;
+        height: 320px;
+
+        .custom-tooltip {
+          background-color: $color-red;
+          padding: 10px;
+          border-radius: 5px;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+          font-size: 14px;
+          color: $color-light;
+        }
+
+        .recharts-responsive-container {
+          width: 100%;
+          height: 100%;
+        }
+
+        .title-activity {
+          color: $color-dark;
+          font-size: 15px;
+          top: 24px;
+          left: 32px;
+          font-weight: 600;
+        }
+      }
+
+      &_down {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 28px;
+
+        &_score {
+          .score-chart {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 258px;
+            height: 263px;
+            background-color: $color-light-grey;
+            border-radius: 10px;
+
+            .score-title {
+              position: absolute;
+              left: 11.63%;
+              right: 73.26%;
+              top: 9.13%;
+              bottom: 81.75%;
+              font-size: 15px;
+              font-weight: bold;
+              color: #20253a;
+            }
+
+            .score-info {
+              position: absolute;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+
+              .score-value {
+                font-size: 30px;
+                font-weight: bold;
+                color: #20253a;
+              }
+
+              .score-text {
+                font-size: 15px;
+                color: #74798c;
+              }
+            }
+          }
+        }
+
+        &_performance {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #282D30;
+          border-radius: 10px;
+          width: 258px;
+          height: 263px;
+        }
+      }
     }
 
     &_keydata {
@@ -46,85 +140,13 @@
       gap: 20px;
       margin-left: auto;
       margin-right: 20px;
+      justify-content: space-between;
 
       @include md {
         flex-wrap: wrap;
         flex-direction: row;
         gap: 2rem;
         width: 100%;
-      }
-    }
-
-    &_activity {
-      background-color: $color-light-grey;
-      border-radius: 5px;
-      padding: 20px;
-      width: 100%;
-      height: 320px;
-
-      .custom-tooltip {
-        background-color: $color-red;
-        padding: 10px;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-        font-size: 14px;
-        color: $color-light;
-      }
-
-      .recharts-responsive-container {
-        width: 100%;
-        height: 100%;
-      }
-
-      .title-activity {
-        color: $color-dark;
-        font-size: 15px;
-        top: 24px;
-        left: 32px;
-        font-weight: 600;
-      }
-    }
-
-    .score-chart {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 200px;
-      height: 200px;
-      background-color: $color-light-grey;
-      border-radius: 10px;
-
-      .score-title {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: #20253a;
-      }
-
-      .score-info {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-
-        .score-value {
-          font-size: 2rem;
-          font-weight: bold;
-          color: #20253a;
-        }
-
-        .score-text {
-          font-size: 1rem;
-          color: #74798c;
-        }
       }
     }
   }

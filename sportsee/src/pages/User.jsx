@@ -49,20 +49,33 @@ const User = () => {
         </h1>
         <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
       </header>
-      <div className="profile_main">
-        <div className="profile_main_activity">
-          <ActivityChart sessions={userActivity.sessions} />
+
+      <div className="profile_charts">
+        <div className="profile_charts_left">
+          {/* graph activité quotidienne */}
+          <div className="profile_charts_left_activity">
+            <ActivityChart sessions={userActivity.sessions} />
+          </div>
+
+          {/* 3 graphes en dessous */}
+
+          <div className="profile_charts_left_down">
+            <div className="profile_charts_left_down_averageSessions">
+              <AverageSessionsChart sessions={userAvgSessions.sessions} />
+            </div>
+            <div className="profile_charts_left_down_performance">
+              <PerformanceChart
+                performanceData={userPerformance.performanceData}
+              />
+            </div>
+            <div className="profile_charts_left_down_score">
+              <ScoreChart score={userInfos.score || userInfos.todayScore} />
+            </div>
+          </div>
         </div>
-        <div className="profile_main_averageSessions">
-          <AverageSessionsChart sessions={userAvgSessions.sessions} />
-        </div>
-        <div className="profile_main_performance">
-          <PerformanceChart performanceData={userPerformance.performanceData} />
-        </div>
-        <div className="profile_main_chart">
-          <ScoreChart score={userInfos.score || userInfos.todayScore} />
-        </div>
-        <div className="profile_main_keydata">
+        {/* graph récap des infos sur la droite */}
+
+        <div className="profile_charts_keydata">
           <KeyDataCard
             value={userInfos.calorieCount}
             title="Calories"

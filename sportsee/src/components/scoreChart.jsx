@@ -10,7 +10,7 @@ const ScoreChart = ({ score }) => {
   return (
     <div className="score-chart">
       <h3 className="score-title">Score</h3>
-      <ResponsiveContainer width="100%" height={200}>
+      <ResponsiveContainer width="100%" height={253}>
         <PieChart>
           <Pie
             data={data}
@@ -21,11 +21,14 @@ const ScoreChart = ({ score }) => {
             endAngle={450}
             paddingAngle={5}
             cornerRadius={50}
-          > {/* correspond a la jauge */}
+          >
+            {" "}
+            {/* correspond a la jauge */}
             <Cell key="score" fill="#FF0000" />
             <Cell key="rest" fill="transparent" stroke="transparent" />
           </Pie>
-          <circle cx="50%" cy="50%" r="65" fill="#FFF" /> {/* Cercle blanc au centre */}
+          <circle cx="50%" cy="50%" r="85" fill="#FFF" />{" "}
+          {/* Cercle blanc au centre */}
         </PieChart>
       </ResponsiveContainer>
       <div className="score-info">

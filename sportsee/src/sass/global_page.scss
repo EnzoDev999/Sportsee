@@ -29,7 +29,9 @@ button{
     cursor: pointer;
     border: none;
 }
-
+body{
+    overflow: hidden;
+}
 main{
     padding: 5rem 5rem 5rem 15rem;
 
