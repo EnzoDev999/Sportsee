@@ -34,14 +34,4 @@ body{
 }
 main{
     padding: 5rem 5rem 5rem 15rem;
-
-    @media screen and (max-width: 1500px) {
-        padding: 4rem;
-        margin-top: 9rem;
-        margin-bottom: 9rem;
-    }
-
-    @media screen and (max-width: 675px) {
-        margin-bottom: 11rem;
-    }
 }

@@ -7,14 +7,19 @@
     border-radius: .5rem;
     background-color: $color-light-grey;
     padding: 4rem;
-    max-height: 125px;
+    @include md{
+        padding: 2rem;
+    }
     
     img {
         padding: 2rem;
         border-radius: .5rem;
+        @include md{
+            padding: 1.5rem;
+        }
     }
 
-    .bg_energy {
+    .bg_calorie {
         background-color: rgba(255, 0, 0, 0.1);
     }
 
@@ -37,11 +42,17 @@
 
         h3 {
             font-size: clamp(1.8rem, 2vw, 2rem);
+            @include md{
+                font-size: 17px;
+            }
         }
 
         p {
             font-size: clamp(1.4rem, 1.4vw, 1.4rem);
             color: $color-dark-grey;
+            @include md{
+                font-size: 14px;
+            }
         }
     }
 }

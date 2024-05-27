@@ -30,7 +30,7 @@ const ActivityChart = ({ sessions }) => {
   }));
 
   return (
-    <ResponsiveContainer width="100%" height={300}>
+    <ResponsiveContainer width="100%">
       <p className="title-activity">Activité quotidienne</p>
       <BarChart
         data={formattedSessions}

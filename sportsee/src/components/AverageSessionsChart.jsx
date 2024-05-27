@@ -15,12 +15,20 @@ const CustomTooltip = ({ active, payload }) => {
 const AverageSessionsChart = ({ sessions }) => {
   const days = ["L", "M", "M", "J", "V", "S", "D"];
   const [activeIndex, setActiveIndex] = useState(null);
+  const [xPosition, setXPosition] = useState(0);
 
   const handleMouseMove = (state) => {
     if (state.isTooltipActive) {
       setActiveIndex(state.activeTooltipIndex);
+      const activeDotElement = document.querySelector(
+        `.recharts-active-dot circle`
+      );
+      if (activeDotElement) {
+        setXPosition(activeDotElement.getAttribute("cx"));
+      }
     } else {
       setActiveIndex(null);
+      setXPosition(0);
     }
   };
 
@@ -36,7 +44,10 @@ const AverageSessionsChart = ({ sessions }) => {
         data={formattedSessions}
         margin={{ top: 90, right: 20, bottom: 35, left: 20 }}
         onMouseMove={handleMouseMove}
-        onMouseLeave={() => setActiveIndex(null)}
+        onMouseLeave={() => {
+          setActiveIndex(null);
+          setXPosition(0);
+        }}
       >
         <defs>
           <linearGradient id="colorGradient" x1="0" y1="0" x2="1" y2="0">
@@ -49,7 +60,7 @@ const AverageSessionsChart = ({ sessions }) => {
           stroke="rgba(255, 255, 255, 0.6)"
           tickLine={false}
           axisLine={false}
-          tick={{ dy: 25, fontSize: 14 }} // Ajuster le positionnement et la taille de la police
+          tick={{ dy: 25, fontSize: 14 }}
         />
         <Tooltip content={<CustomTooltip />} cursor={false} />
         <Line
@@ -67,11 +78,11 @@ const AverageSessionsChart = ({ sessions }) => {
         />
         {activeIndex !== null && (
           <rect
-            x={(activeIndex / (sessions.length - 1)) * 100 + "%"}
+            x={activeIndex === 0 ? 0 : xPosition}
             y="0"
-            width={(1 - activeIndex / (sessions.length - 1)) * 100 + "%"}
+            width={activeIndex === 0 ? "100%" : `calc(100% - ${xPosition}px)`}
             height="100%"
-            fill="rgba(0, 0, 0, 0.1)"
+            fill="rgba(0, 0, 0, 0.4)"
             style={{ pointerEvents: "none" }}
           />
         )}

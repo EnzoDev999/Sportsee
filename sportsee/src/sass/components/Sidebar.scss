@@ -1,18 +1,18 @@
-.sidebar {
-    background-color: #000;
-    width: 117px; 
-    height: calc(100vh - 91px); // S'assurer que la sidebar prend toute la hauteur moins la hauteur du header
-    position: fixed; // Fixe la sidebar sur la page
-    top: 91px; // La hauteur de ton header
-    left: 0;
-    display: flex;
-    flex-direction: column; // Organise les enfants en colonne
-    justify-content: center; // Centre les enfants verticalement
-    align-items: center; // Centre les enfants horizontalement
-    box-shadow: 2px 0px 4px 0px rgba(0, 0, 0, 0.25);
+@import "../utils/mixins";
 
-  }
-  
+.sidebar {
+  background-color: #000;
+  width: 117px;
+  height: calc(100vh - 91px); // S'assurer que la sidebar prend toute la hauteur moins la hauteur du header
+  position: fixed;
+  top: 91px; // La hauteur de ton header
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 0px 4px 0px rgba(0, 0, 0, 0.25);
+
   .sidebar-list {
     list-style: none;
     padding: 0;
@@ -30,7 +30,7 @@
     height: auto;
   }
   
-  .copyright{
+  .copyright {
     writing-mode: vertical-rl;
     text-orientation: mixed;
     transform: rotate(180deg);
@@ -40,3 +40,15 @@
     bottom: 30px;
   }
   
+  @include md {
+    width: 80px; // ajustement pour les écrans plus petits
+    height: calc(100vh - 70px);
+    top: 70px;
+    .sidebar-item {
+      padding-left: 10px;
+    }
+    .sidebar-icon {
+      width: 50px;
+    }
+  }
+}

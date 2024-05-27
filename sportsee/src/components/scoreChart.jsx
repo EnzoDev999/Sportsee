@@ -10,7 +10,7 @@ const ScoreChart = ({ score }) => {
   return (
     <div className="score-chart">
       <h3 className="score-title">Score</h3>
-      <ResponsiveContainer width="100%" height={253}>
+      <ResponsiveContainer width="100%">
         <PieChart>
           <Pie
             data={data}
@@ -27,7 +27,7 @@ const ScoreChart = ({ score }) => {
             <Cell key="score" fill="#FF0000" />
             <Cell key="rest" fill="transparent" stroke="transparent" />
           </Pie>
-          <circle cx="50%" cy="50%" r="85" fill="#FFF" />{" "}
+          <circle cx="50%" cy="50%" r="33%" fill="#FFF" />{" "}
           {/* Cercle blanc au centre */}
         </PieChart>
       </ResponsiveContainer>
