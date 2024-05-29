@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDataContext } from "../context/DataContext";
 import KeyDataCard from "../components/KeyDataCard";
 import ScoreChart from "../components/scoreChart";
@@ -16,6 +16,7 @@ import "../sass/pages/user.scss";
 
 const User = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const {
     setUserId,
     userInfos,
@@ -32,6 +33,12 @@ const User = () => {
     }
     console.log(`L'environnement actuel est: ${env}`);
   }, [id, setUserId, env]);
+
+  useEffect(() => {
+    if (error) {
+      navigate("/404");
+    }
+  }, [error, navigate]);
 
   if (error) {
     return <div>Failed to load user data. Please try again later.</div>;
